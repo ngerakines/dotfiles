@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+if command -v brew >/dev/null 2>&1; then
+  echo "brew already installed
+  exit 0
+fi
+
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+brew install ripgrep tmux jq jo fzf bat
