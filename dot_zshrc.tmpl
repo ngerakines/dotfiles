@@ -36,4 +36,10 @@ function rgrep {
 	grep -nrs $1 . | grep -v vendor | grep -v target | grep -vF ".git"
 }
 
+# if type rg &> /dev/null; then
+#   export FZF_DEFAULT_COMMAND='rg --files'
+#   export FZF_DEFAULT_OPTS='-m --height 50% --border'
+# fi
+
+
 export EDITOR='nvim'

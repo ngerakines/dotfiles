@@ -54,8 +54,8 @@ vim.keymap.set("n", "<C-l>", "<C-W>l", { silent = true, noremap = true })
 vim.keymap.set("i", "jk", "<ESC>", { silent = true, noremap = true })
 
 -- easier copy/paste from clipboard
-vim.keymap.set("n", "<Leader>y", '"+y', { silent = true, noremap = true })
-vim.keymap.set("n", "<Leader>p", '"+p', { silent = true, noremap = true })
+-- vim.keymap.set("n", "<Leader>y", '"+y', { silent = true, noremap = true })
+-- vim.keymap.set("n", "<Leader>p", '"+p', { silent = true, noremap = true })
 
 -- Setup lazy.nvim
 require("lazy").setup({
@@ -64,6 +64,11 @@ require("lazy").setup({
 	},
 	checker = { enabled = true },
 })
+
+-- search
+vim.keymap.set("n", "<c-P>", require('fzf-lua').files, { desc = "Fzf Files" })
+vim.keymap.set("n", "<c-G>", require('fzf-lua').grep, { desc = "Fzf Grep" })
+
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
