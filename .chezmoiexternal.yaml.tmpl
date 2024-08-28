@@ -1,0 +1,15 @@
+.tmux/plugins/tpm:
+    type: git-repo
+    url: https://github.com/tmux-plugins/tpm.git
+.oh-my-zsh:
+    type: archive
+    url: https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz
+    exact: true
+    stripComponents: 1
+    refreshPeriod: 168h
+.local/share/nvim/lazy/lazy.nvim:
+    type: git-repo
+    url: https://github.com/folke/lazy.nvim.git
+    stripComponents: 1
+    clone.args:
+        - "--filter=blob:none"
