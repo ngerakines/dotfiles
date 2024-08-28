@@ -1,5 +1,10 @@
+{{- $osid := .chezmoi.os -}}
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
 {{- $email := promptStringOnce . "email" "Email address" -}}
 
 [data]
     email = {{ $email | quote }}
+    osid = {{ $osid | quote }}
 
