@@ -1,8 +1,17 @@
+
+SHELL=/usr/bin/zsh
+
 # Paths first
 export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/go/bin"
+{{ if eq .osid "darwin" }}
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:/opt/nvim-linux64/bin"
+{{ end }}
+
+setopt COMPLETE_IN_WORD
+autoload -U compinit
+compinit
 
 # pyenv must be loaded before the zsh plugin
 export PYENV_ROOT="$HOME/.pyenv"
@@ -19,7 +28,11 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="eastwood"
 
+{{ if eq .osid "linux-bluefin" }}
+plugins=(git rust pyenv tmux brew)
+{{ else }}
 plugins=(git 1password rust pyenv tmux brew)
+{{ end }}
 
 source $ZSH/oh-my-zsh.sh
 
@@ -38,4 +51,12 @@ function rgrep {
 
 export EDITOR='nvim'
 
+{{ if eq .osid "linux-bluefin" }}
+eval "$(starship init zsh)"
+
+### bling.sh source start
+test -f /usr/share/ublue-os/bluefin-cli/bling.sh && source /usr/share/ublue-os/bluefin-cli/bling.sh
+### bling.sh source end
+{{ else }}
 source <(fzf --zsh)
+{{ end }}

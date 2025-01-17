@@ -3,9 +3,8 @@ set -e
 
 if command -v brew >/dev/null 2>&1 ; then
   echo "brew already installed"
-  exit 0
+else
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-brew install neovim htop ripgrep tmux jq jo fzf bat npm node wget fd
+brew install neovim htop ripgrep pyenv nvtop tmux jq jo fzf bat npm node wget fd atuin starship direnv eza tealdeer ugrep zoxide
